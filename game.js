@@ -1,6 +1,6 @@
 var // Global variables!
 width = 800,
-height = width - 200,
+height = width - 100,
 bg = 0,
 myHeight = height,
 myWidth = width,
@@ -76,8 +76,8 @@ function addPlatforms() {
     // Make the third row: -  _ -
     makeTwo( 100, height/1.5, 150, 10 );
     prevBox = getPrevBox();
-    gap = 80;
-    makeTwo( prevBox.x + prevBox.width + gap, prevBox.y + 60, 60, prevBox.height);
+    gap = 35;
+    makeTwo( prevBox.x + prevBox.width + gap, prevBox.y + 40, 60, prevBox.height);
     prevBox = getPrevBox();
     gap = 40;
     makeTwo( prevBox.x + prevBox.width + gap, prevBox.y - 45, 100, prevBox.height);
@@ -175,7 +175,6 @@ function updatePlayer() {
 
     fill(player.color.r, player.color.g, player.color.b);
     rect( player.x, player.y, player.width, player.height);
-    debug();
 }
 
 function setup() {
