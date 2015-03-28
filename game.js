@@ -23,6 +23,23 @@ function box(x, y, width, height) {
     this.color = gray
 }
 
+function makeOne(x, y, width, height) {
+    var prevlength = boxes.length;
+    boxes.push( new box (
+        x,
+        y,
+        width,
+        height
+    ));
+}
+
+// Left wall.
+makeOne(0, 0, 10, height);
+// Ground.
+makeOne(0, height - 10, width, 10);
+// Right wall.
+makeOne(width - 10, 0, 50, height);
+
 // dimensions
 function addStairs() {
     var
@@ -38,16 +55,6 @@ function addStairs() {
         ));
         boxes[i].color = maroon;
     }
-}
-
-function makeOne(x, y, width, height) {
-    var prevlength = boxes.length;
-    boxes.push( new box (
-        x,
-        y,
-        width,
-        height
-    ));
 }
 
 function makeTwo(x, y, width, height) {
@@ -103,13 +110,6 @@ function addGround() {
 addStairs();
 addPlatforms();
 addGround();
-
-// Left wall.
-makeOne(0, 0, 10, height);
-// Ground.
-makeOne(0, height - 10, width, 10);
-// Right wall.
-makeOne(width - 10, 0, 50, height);
 
 function drawBoxes() {
     for (var i = 0; i < boxes.length; i++) {
