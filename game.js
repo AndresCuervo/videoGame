@@ -40,8 +40,18 @@ function addStairs() {
     }
 }
 
+function makeOne(x, y, width, height) {
+    var prevlength = boxes.length;
+    boxes.push( new box (
+        x,
+        y,
+        width,
+        height
+    ));
+}
+
 function makeTwo(x, y, width, height) {
-    var prevLength = boxes.length;
+    var prevlength = boxes.length;
     for( var i = 0; i < 2; i++ ){
     boxes.push( new box (
         x,
@@ -50,8 +60,8 @@ function makeTwo(x, y, width, height) {
         height
     ));
     }
-    boxes[prevLength].color = maroon;
-    boxes[prevLength + 1].color = red;
+    boxes[prevlength].color = maroon;
+    boxes[prevlength + 1].color = red;
 }
 
 function getPrevBox() {
@@ -84,30 +94,19 @@ function addPlatforms() {
 }
 
 function addGround() {
-    rect(10, height/0.5, 50, 10);
+    makeOne( 10, height/1.5, 50, 10 );
 }
 
 addStairs();
 addPlatforms();
+addGround();
 
-boxes.push( new box (
-    0,
-    0,
-    10,
-    height
-),
-new box (
-    0,
-    height - 10,
-    width,
-    10
-),
-new box (
-    width - 10,
-    0,
-    50,
-    height
-) );
+// Left wall.
+makeOne(0, 0, 10, height);
+// Ground.
+makeOne(0, height - 10, width, 10);
+// Right wall.
+makeOne(width - 10, 0, 50, height);
 
 function drawBoxes() {
     for (var i = 0; i < boxes.length; i++) {
