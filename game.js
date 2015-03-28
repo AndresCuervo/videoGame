@@ -74,7 +74,7 @@ function addPlatforms() {
     gap = 200;
     makeTwo( prevBox.x + prevBox.width + gap, prevBox.y - 15, 100, prevBox.height);
     // Make the third row: -  _ -
-    makeTwo( 100, height/1.5, 150, 10 );
+    makeTwo( 150, height/1.5, 100, 10 );
     prevBox = getPrevBox();
     gap = 35;
     makeTwo( prevBox.x + prevBox.width + gap, prevBox.y + 40, 60, prevBox.height);
