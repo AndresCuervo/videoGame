@@ -94,7 +94,10 @@ function addPlatforms() {
 }
 
 function addGround() {
-    makeOne( 10, height/1.5, 50, 10 );
+    var prevBox;
+    makeOne( 10, height/1.38, 65, 10 );
+    prevBox = getPrevBox();
+    makeOne( prevBox.width - 10, prevBox.y, prevBox.height, 40 );
 }
 
 addStairs();
