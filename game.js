@@ -83,6 +83,10 @@ function addPlatforms() {
     makeTwo( prevBox.x + prevBox.width + gap, prevBox.y - 45, 100, prevBox.height);
 }
 
+function addGround() {
+    rect(10, height/0.5, 50, 10);
+}
+
 addStairs();
 addPlatforms();
 
