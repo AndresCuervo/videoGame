@@ -40,6 +40,10 @@ makeOne(0, height - 10, width, 10);
 // Right wall.
 makeOne(width - 10, 0, 50, height);
 
+var leftWall = boxes[0];
+var ground = boxes[1];
+var rightWall = boxes[2];
+
 // dimensions
 function addStairs() {
     var
@@ -100,16 +104,16 @@ function addPlatforms() {
     makeTwo( prevBox.x + prevBox.width + gap, prevBox.y - 45, 100, prevBox.height);
 }
 
-function addGround() {
+function addFloor() {
     var prevBox;
-    makeOne( 10, height/1.38, 65, 10 );
+    makeOne( 10, height/1.38, 70, 10 );
     prevBox = getPrevBox();
-    makeOne( prevBox.width - 10, prevBox.y, prevBox.height, 40 );
+    makeOne( prevBox.width - 25, height/1.38, prevBox.height, 40 );
 }
 
 addStairs();
 addPlatforms();
-addGround();
+addFloor();
 
 function drawBoxes() {
     for (var i = 0; i < boxes.length; i++) {
@@ -188,7 +192,7 @@ function setup() {
     background(bg);
     fill(0);
     strokeWeight(0);
-    player = new Entity(width/5, myHeight/2, 10, 10);
+    player = new Entity(width/20, myHeight/2, 10, 10);
     player.color = yellow;
 }
 
