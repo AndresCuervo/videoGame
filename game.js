@@ -75,7 +75,7 @@ function makeTwo(x, y, width, height) {
     boxes[prevlength + 1].color = red;
 }
 
-function getPrevBox() {
+function getTwoBoxesBack() {
     // Return the box that was made 2 boxes ago,
     // because this function is to be used in conjuction
     // with add platforms, which makes two platforms at a time.
@@ -83,32 +83,31 @@ function getPrevBox() {
 }
 
 function addPlatforms() {
-    var prevBox, gap;
+    var twoBoxesBack, gap;
     // make the top row of two-colored platforms: - -
     makeTwo( 10, height/3.2, width/1.8, 10 );
-    prevBox = getPrevBox();
+    twoBoxesBack = getTwoBoxesBack();
     gap = 120;
-    makeTwo( prevBox.x + prevBox.width + gap, prevBox.y, width - prevBox.x - prevBox.width - gap, prevBox.height);
+    makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y, width - twoBoxesBack.x - twoBoxesBack.width - gap, twoBoxesBack.height);
     // make the second row, the second platform being slightly higher: _ -
     makeTwo( 200, height/2, 220, 10 );
-    prevBox = getPrevBox();
+    twoBoxesBack = getTwoBoxesBack();
     gap = 200;
-    makeTwo( prevBox.x + prevBox.width + gap, prevBox.y - 15, 100, prevBox.height);
+    makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y - 15, 100, twoBoxesBack.height);
     // Make the third row: -  _ -
     makeTwo( 150, height/1.5, 100, 10 );
-    prevBox = getPrevBox();
+    twoBoxesBack = getTwoBoxesBack();
     gap = 35;
-    makeTwo( prevBox.x + prevBox.width + gap, prevBox.y + 40, 60, prevBox.height);
-    prevBox = getPrevBox();
+    makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y + 40, 60, twoBoxesBack.height);
+    twoBoxesBack = getTwoBoxesBack();
     gap = 40;
-    makeTwo( prevBox.x + prevBox.width + gap, prevBox.y - 45, 100, prevBox.height);
+    makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y - 45, 100, twoBoxesBack.height);
 }
 
 function addFloor() {
-    var prevBox;
-    makeOne( 10, height/1.38, 70, 10 );
-    prevBox = getPrevBox();
-    makeOne( prevBox.width - 25, height/1.38, prevBox.height, 40 );
+    // var prevBox;
+    // makeOne( 10, height/1.38, 70, 10 );
+    // makeOne( prevBox.width - 25, height/1.38, prevBox.height, 40 );
 }
 
 addStairs();
