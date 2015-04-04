@@ -1,6 +1,6 @@
 var // Global variables!
 width = 800,
-height = width - 100,
+height = width - 200,
 bg = 0,
 myHeight = height,
 myWidth = width,
@@ -14,6 +14,10 @@ maroon = {r: 85, g: 38, b: 56};
 gray = {r: 50, g: 50, b: 50};
 yellow = {r: 226, g: 227, b: 112};
 red = {r: 191, g: 39, b: 64};
+// Platform's Y values.
+platformY1 = height/7,
+platformY2 = platformY1 + height/6;
+platformY3 = platformY2 + height/6;
 
 function box(x, y, width, height) {
     this.x = x,
@@ -48,12 +52,12 @@ var rightWall = boxes[2];
 function addStairs() {
     var
     xOffset = 20,
-    yOffset = 38;
+    yOffset = 47;
 
     for (var i = 0; i < 9; i++) {
         boxes.push( new box(
             width/1.65 + i * xOffset,
-            height/2.5 + i * yOffset,
+            platformY1 + 50 + i * yOffset,
             50,
             10
         ));
@@ -64,15 +68,19 @@ function addStairs() {
 function makeTwo(x, y, width, height) {
     var prevlength = boxes.length;
     for( var i = 0; i < 2; i++ ){
-    boxes.push( new box (
-        x,
-        y + i * 10,
-        width,
-        height
-    ));
+        boxes.push( new box (
+            x,
+            y + i * 10,
+            width,
+            height
+        ));
     }
     boxes[prevlength].color = maroon;
     boxes[prevlength + 1].color = red;
+}
+
+function getPrevBox() {
+    return boxes[boxes.length - 1];
 }
 
 function getTwoBoxesBack() {
@@ -82,20 +90,24 @@ function getTwoBoxesBack() {
     return boxes[boxes.length - 2];
 }
 
+
 function addPlatforms() {
-    var twoBoxesBack, gap;
+    var // Local Variables
+    twoBoxesBack,
+    gap;
+
     // make the top row of two-colored platforms: - -
-    makeTwo( 10, height/3.2, width/1.8, 10 );
+    makeTwo( 10, platformY1, width/1.8, 10 );
     twoBoxesBack = getTwoBoxesBack();
     gap = 120;
     makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y, width - twoBoxesBack.x - twoBoxesBack.width - gap, twoBoxesBack.height);
     // make the second row, the second platform being slightly higher: _ -
-    makeTwo( 200, height/2, 220, 10 );
+    makeTwo( 200, platformY2, 250, 10 );
     twoBoxesBack = getTwoBoxesBack();
-    gap = 200;
+    gap = 180;
     makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y - 15, 100, twoBoxesBack.height);
     // Make the third row: -  _ -
-    makeTwo( 150, height/1.5, 100, 10 );
+    makeTwo( 150, platformY3, 100, 10 );
     twoBoxesBack = getTwoBoxesBack();
     gap = 35;
     makeTwo( twoBoxesBack.x + twoBoxesBack.width + gap, twoBoxesBack.y + 40, 60, twoBoxesBack.height);
@@ -105,9 +117,14 @@ function addPlatforms() {
 }
 
 function addFloor() {
-    // var prevBox;
-    // makeOne( 10, height/1.38, 70, 10 );
-    // makeOne( prevBox.width - 25, height/1.38, prevBox.height, 40 );
+    var prevBox;
+    makeOne( 10, platformY3 + 50, 70, 10 );
+    prevBox = getPrevBox();
+    makeOne( prevBox.x + prevBox.width, prevBox.y, prevBox.height, 40 );
+    // Finally works ^^^^!!! tricky getPrevBox lol. Anyway, tomorrow TODO:
+    // - finish gray floor
+    // - make method to either auto fill in or make a polygon (how to find that polygon??)
+    //     that will do the orange tiling
 }
 
 addStairs();
