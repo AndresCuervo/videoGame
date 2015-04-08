@@ -11,7 +11,7 @@ gravity = 0.4,
 boxes = [],
 dir,
 maroon = {r: 85, g: 38, b: 56};
-gray = {r: 50, g: 50, b: 50};
+gray = {r: 100, g: 100, b: 100};
 yellow = {r: 226, g: 227, b: 112};
 red = {r: 191, g: 39, b: 64};
 // Platform's Y values.
